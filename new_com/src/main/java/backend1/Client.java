@@ -1,7 +1,7 @@
-package backend;
+package backend1;
 
-import java.text.DateFormat;
 import java.sql.*;
+import java.text.DateFormat;
 
 /**
  * Class for client with data Name,Id,Password,Phone,Email VIP Due(if pay for
@@ -17,7 +17,7 @@ import java.sql.*;
 public class Client {
 	private String Name, Id, Password, Phone, Email;
 	private boolean VIP;
-	private java.sql.Date Due;
+	private Date Due;
 
 	public String getName() {
 		return Name;
@@ -71,7 +71,7 @@ public class Client {
 		return Due;
 	}
 
-	public void setDue(java.sql.Date due) {
+	public void setDue(Date due) {
 		Due = due;
 	}
 
@@ -107,8 +107,8 @@ public class Client {
 	 */
 	public void MonthVIP() {
 		long millis = System.currentTimeMillis();
-		java.sql.Date Now = new java.sql.Date(millis);
-		java.sql.Date tmp = new java.sql.Date(millis);
+		Date Now = new Date(millis);
+		Date tmp = new Date(millis);
 		tmp.setTime(millis + 30L * 1000 * 60 * 60 * 24);
 		Due = tmp;
 		VIP = true;
@@ -165,7 +165,7 @@ public class Client {
 				String Phone = result.getString("Phone");
 				boolean VIP = result.getBoolean("VIP");
 				long milsDue = result.getLong("Due");
-				java.sql.Date Due = new java.sql.Date(milsDue);
+				Date Due = new Date(milsDue);
 				System.out.println("Client [Name=" + Name +
 						", Id=" + Id +
 						", Password=" + Password +

@@ -1,4 +1,4 @@
-package backend;
+package backend1;
 
 //path jdbcUrl should be changed
 //path jdbcUrl should be changed 
@@ -18,8 +18,6 @@ public class Test {
 		System.out.println(MyAccount);
 		MyAccount.storeToDB(jdbcUrl);
 		Client.getDB(jdbcUrl);
-		System.out.println("123"+"A"+"測試");
-
 
 
 	}

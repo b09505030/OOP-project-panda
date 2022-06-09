@@ -1,8 +1,6 @@
-package backend;
+package backend1;
 
 import java.util.ArrayList;
-
-import org.json.JSONObject;
 
 public class Main {
 
@@ -17,25 +15,24 @@ public class Main {
 		}
 		System.out.println("印五個\n");
 
-		//生成購物車 要準備一個使用者的 名字  地址  VIP
+		//生成購物車 要準備一個使用者的 名字  地址  VIP  
 		String   username = "謝祥祥";
 		boolean  VIP  = false;
 		Position plc = new Position("106台北市大安區長興街31號",25.016731, 121.545355);
 		Restaurant rtt= Restaurant.GetARestaurantFromArray(Allrt, "樸食");
 		//這邊我手動幫餐廳設定滿額折購  但這應該要讓店家自己設定
 		rtt.setDiscount(200,0.9);
-//		System.out.println("001"+rtt);
-//		System.out.println("002"+plc);
+
 		//當客戶逛餐廳時 點進去 選菜介面 的瞬間 用餐廳的名字建立一個currentCart如下
 		ShopCart currentCart;
 		//舉個例子  假設我選餐廳 春來麵線
 		currentCart = new ShopCart(username,VIP,plc, Restaurant.GetARestaurantFromArray(Allrt, "春來麵線"));
 		//不要這間餐廳就直接選其他餐廳
+
 		//比如選 樸食
 		currentCart = null;
 		currentCart = new ShopCart(username,VIP,plc,rtt);
 
-//		System.out.println(currentCart);
 		//好ㄟ可以點餐了
 		System.out.println("點餐 還要運費");
 		currentCart.addfood("宮保雞丁", 1);
@@ -53,18 +50,22 @@ public class Main {
 		System.out.println("\n在來一點雞腿"+currentCart+"\n\n");
 		//送出購物車
 		Order o = new Order(currentCart);
-//		JSONObject tst = new JSONObject(currentCart.toString());
-//		System.out.println(tst);
-//		ShopCart A = ShopCart.FromJsontoObject(tst);
-
 		String jdbcUrlOrder = "jdbc:sqlite:Orderdb.db";
 		o.storeToDB(jdbcUrlOrder);
-		System.out.println(currentCart);
-		//System.out.println(o);
+		System.out.println(o);
+
 		ArrayList<Order> AllOrder = Order.getDB(jdbcUrlOrder);
 		for(Order O:AllOrder) {
 			System.out.println(O);
 		}
+
+
+
+
+
+//		String A = "70";
+//		Double B = 0.0;
+//		System.out.println(B.parseDouble(A));
 
 	}
 

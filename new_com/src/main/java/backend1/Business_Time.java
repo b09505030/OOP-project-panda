@@ -1,7 +1,7 @@
-package backend;
-import org.json.*;
+package backend1;
+
 /**
- * class to store Business time from mon to sun
+ * class to store Business time from mon to sun 
  * for each day start and end are included
  * @author b09505028
  *
@@ -25,10 +25,7 @@ public class Business_Time {
 
 		@Override
 		public String toString() {
-			JSONObject tmp = new JSONObject();
-			tmp.put("start", start);
-			tmp.put("end", end);
-			return tmp.toString();
+			return "start=" + start + ", end=" + end;
 		}
 	}
 
@@ -43,10 +40,10 @@ public class Business_Time {
 	}
 
 	@Override
+
 	public String toString() {
-		JSONObject tmp = new JSONObject("{\"mon\":" + mon + ", \"tue\":" + tue + ", \"wed\":" + wed + ", \"thu\":" + thu + ", \"fri\":" + fri
-				+ ", \"sat\":" + sat + ", \"sun\":" + sun + "}");
-		return tmp.toString();
+		return "Business_Time [mon=" + mon + ", tue=" + tue + ", wed=" + wed + ", thu=" + thu + ", fri=" + fri
+				+ ", sat=" + sat + ", sun=" + sun + "]";
 	}
 
 }

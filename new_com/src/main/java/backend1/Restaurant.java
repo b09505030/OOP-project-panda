@@ -1,4 +1,4 @@
-package backend;
+package backend1;
 
 import com.google.gson.Gson;
 import org.json.JSONArray;
@@ -11,13 +11,13 @@ import java.util.ArrayList;
 
 public class Restaurant {
 	private String 					name;
-	private Position 				position;
+	private Position position;
 	private String 					phone;
 	private String 					store_description;
 	private String 					order_description;
 	private ArrayList<String> 		type;
 	private ArrayList<menuItem> 	menu;
-	private Business_Time 			business_time;
+	private Business_Time business_time;
 	private double 					priceForDiscount;
 	private double 					discount;
 
@@ -129,18 +129,10 @@ public class Restaurant {
 
 	@Override
 	public String toString() {
-//		StringBuffer type;
-//		type.append("{")
-//		for(String s) {
-//			type.append()
-//		}
-//		this.type
-		return "RT{\"name\":" + name + ", \"position\":" + position + ", \"phone\":" + phone + ", \"store_description\":"
-				+ store_description + ", \"order_description\":" + order_description + ", \"type\":" + type + ", \"menu\":" + menu
-				+ ", \"business_time\":" + business_time +", \"priceForDiscount\":" + priceForDiscount + ", \"discount\":"
-				+ discount +  "}";
+		return "Restaurant [name=" + name + ", position=" + position + ", phone=" + phone + ", store_description="
+				+ store_description + ", order_description=" + order_description + ", type=" + type + ", menu=" + menu
+				+ ", business_time=" + business_time + "]";
 	}
-
 
 	/**
 	 * convert a json to a Restaurant object this method is only for testing
@@ -151,7 +143,7 @@ public class Restaurant {
 //		JSONObject rt = new JSONObject(gsonRestrant);
 		JSONObject rt = input;
 		String 					name=rt.getString("name");
-		Position 				position=new Position(rt.getJSONObject("position").getString("address"),rt.getJSONObject("position").getDouble("latitude"),rt.getJSONObject("position").getDouble("longitude"));
+		Position position=new Position(rt.getJSONObject("position").getString("address"),rt.getJSONObject("position").getDouble("latitude"),rt.getJSONObject("position").getDouble("longitude"));
 		String 					phone=rt.getString("phone");
 		String 					store_description=rt.getString("store_description");
 		String 					order_description=rt.getString("order_description");
@@ -164,7 +156,7 @@ public class Restaurant {
 			menuItem tmp = new menuItem(rt.getJSONArray("menu").getJSONObject(i).getString("name"),rt.getJSONArray("menu").getJSONObject(i).getString("price"));
 			menu.add(tmp);
 		}
-		Business_Time 			business_time;
+		Business_Time business_time;
 		{
 			Business_Time.BusDay mon = new Business_Time.BusDay(rt.getJSONObject("business_time").getJSONObject("mon").getString("start"),rt.getJSONObject("business_time").getJSONObject("mon").getString("end"));
 			Business_Time.BusDay tue = new Business_Time.BusDay(rt.getJSONObject("business_time").getJSONObject("tue").getString("start"),rt.getJSONObject("business_time").getJSONObject("tue").getString("end"));
@@ -195,7 +187,7 @@ public class Restaurant {
 	public static Restaurant FromJsontoObject(JSONObject input) {
 		JSONObject rt = input;
 		String 					name=rt.getString("name");
-		Position 				position=new Position(rt.getJSONObject("position").getString("address"),rt.getJSONObject("position").getDouble("latitude"),rt.getJSONObject("position").getDouble("longitude"));
+		Position position=new Position(rt.getJSONObject("position").getString("address"),rt.getJSONObject("position").getDouble("latitude"),rt.getJSONObject("position").getDouble("longitude"));
 		String 					phone=rt.getString("phone");
 		String 					store_description=rt.getString("store_description");
 		String 					order_description=rt.getString("order_description");
@@ -208,7 +200,7 @@ public class Restaurant {
 			menuItem tmp = new menuItem(rt.getJSONArray("menu").getJSONObject(i).getString("name"),rt.getJSONArray("menu").getJSONObject(i).getString("price"));
 			menu.add(tmp);
 		}
-		Business_Time 			business_time;
+		Business_Time business_time;
 		{
 			Business_Time.BusDay mon = new Business_Time.BusDay(rt.getJSONObject("business_time").getJSONObject("mon").getString("start"),rt.getJSONObject("business_time").getJSONObject("mon").getString("end"));
 			Business_Time.BusDay tue = new Business_Time.BusDay(rt.getJSONObject("business_time").getJSONObject("tue").getString("start"),rt.getJSONObject("business_time").getJSONObject("tue").getString("end"));
@@ -315,25 +307,6 @@ public class Restaurant {
 			Allrt[i]=Restaurant.FromJsontoObject_z(josnArray.getJSONObject(i));
 		}
 		return Allrt;
-
-	}
-	public String tojsonStr(){
-		JSONObject jsonRestrant = new JSONObject(this);
-//		System.out.println(jsonRestrant);
-
-//		System.out.println(new JSONObject(this.getBusiness_time().toString()));
-		jsonRestrant.put("business_time", new JSONObject(this.getBusiness_time().toString()));
-//		System.out.println(jsonRestrant);
-
-//		System.out.println(new JSONArray(this.getMenu().toString()));
-		jsonRestrant.put("menu", new JSONArray(this.getMenu().toString()));
-//		System.out.println(jsonRestrant);
-
-//		System.out.println(new JSONObject(this.getPosition().toString()));
-		jsonRestrant.put("position", new JSONObject(this.getPosition().toString()));
-//		System.out.println(jsonRestrant);
-//		System.out.println(Restaurant.FromJsontoObject(jsonRestrant));
-		return jsonRestrant.toString();
 
 	}
 
