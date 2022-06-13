@@ -1,0 +1,36 @@
+package backend;
+
+import java.util.ArrayList;
+
+//path jdbcUrl should be changed
+//path jdbcUrl should be changed 
+//path jdbcUrl should be changed 
+//path jdbcUrl should be changed 
+//path jdbcUrl should be changed 
+//path jdbcUrl should be changed 
+public class Test {
+
+	public static void main(String[] args) {
+		//path jdbcUrl should be changed 
+		String  jdbcUrl = "jdbc:sqlite:userdb.db";
+		Client MyAccount = new Client("Billy","b09505028","b09505028","0988233936","b09505028@gmail.com");
+
+		System.out.println(MyAccount);
+		MyAccount.MonthVIP();
+		System.out.println(MyAccount);
+//		MyAccount.storeToDB(jdbcUrl);
+		ArrayList<Client> Cent = Client.getDB(jdbcUrl);
+		for(Client c:Cent) {
+			System.out.println(c);
+		}
+
+
+	}
+
+
+
+
+
+
+
+}
