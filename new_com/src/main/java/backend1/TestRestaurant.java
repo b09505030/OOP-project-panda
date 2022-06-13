@@ -1,7 +1,7 @@
-package backend;
+package backend1;
 
-import java.util.ArrayList;
-import org.json.*;
+import com.google.gson.Gson;
+import org.json.JSONObject;
 public class TestRestaurant {
 	public static void main(String[] args) {
 //		//onlyfortesting
@@ -72,13 +72,12 @@ public class TestRestaurant {
 
 		// store a restrant to SQL
 		String jdbcUrl = "jdbc:sqlite:userdb.db";
-
-
-		System.out.println(MyAccount.getMyRestrant().tojsonStr());
-		new JSONObject(MyAccount.getMyRestrant().tojsonStr());
-
-		MyAccount.storeToDB(jdbcUrl);
-		RestaurantAccount.getDB(jdbcUrl);
+		JSONObject jsonRestrant = new JSONObject(MyAccount.getMyRestrant());
+		System.out.println(MyAccount.getMyRestrant().getBusiness_time());
+		jsonRestrant.put("business_time", new JSONObject(MyAccount.getMyRestrant().getBusiness_time()).toString());
+		System.out.println(new Gson().toJson(MyAccount.getMyRestrant()));
+//		MyAccount.storeToDB(jdbcUrl);
+//		RestaurantAccount.getDB(jdbcUrl);
 //		Client.getDB(jdbcUrl);
 //		Deliver.getDB(jdbcUrl);
 

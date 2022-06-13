@@ -1,25 +1,21 @@
-package backend;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
+package backend1;
 
-import org.json.JSONObject;
+import com.google.gson.Gson;
+
+import java.sql.*;
+import java.util.ArrayList;
 
 public class Order {
 	public String 		auto;
 	public String 		state;
-	public ShopCart 	shopCart;
+	public ShopCart shopCart;
 	public double 		totalprice;
 	public long		bookingtime_ms;
 	public long 		donetime_ms;
-	public Position 	destination;
+	public Position destination;
 	public String 		buyername;
 	public String 		drivername;
-	public Restaurant 	supplier;
+	public Restaurant supplier;
 	//接收購物車的建構子
 	public Order(ShopCart shopCart) {
 		super();
@@ -39,7 +35,7 @@ public class Order {
 	}
 
 	public Order(String auto, String state, ShopCart shopCart, double totalprice, long bookingtime_ms, long donetime_ms,
-				 Position destination, String buyername, String drivername, Restaurant supplier) {
+                 Position destination, String buyername, String drivername, Restaurant supplier) {
 		super();
 		this.auto = auto;
 		this.state = state;
@@ -70,14 +66,14 @@ public class Order {
 
 
 			String 		state			=this.state;
-			String 		shopCart		=this.shopCart.toString();
+			String 		shopCart		=new Gson().toJson(this.shopCart);
 			double 		totalprice		=this.totalprice;
 			long		bookingtime_ms	=this.bookingtime_ms;
 			long 		donetime_ms		=this.donetime_ms;
-			String 		destination		=this.destination.toString();
+			String 		destination		=new Gson().toJson(this.destination);
 			String 		buyername		=this.buyername;
 			String 		drivername		=this.drivername;
-			String 		supplier		=this.supplier.tojsonStr();
+			String 		supplier		=new Gson().toJson(this.supplier);
 //				System.out.println(state+"'\n,'" +shopCart+ "'\n,'"+totalprice+"'\n,'"+bookingtime_ms+"'\n,'"+donetime_ms+"'\n,'"+destination+"'\n,'"+buyername+"'\n,'"+drivername+"'\n,'"+supplier);
 			String prSQL = "INSERT INTO ordertable(state,shopCart,totalprice,bookingtime_ms,donetime_ms,destination,buyername,drivername,supplier)"
 					+ "VALUES (?,?,?,?,?,?,?,?,?);";
@@ -113,14 +109,14 @@ public class Order {
 			while (result.next()) {
 				String 		auto=result.getString("auto");
 				String 		state=result.getString("state");
-				ShopCart 	shopCart = ShopCart.FromJsontoObject(new JSONObject((result.getString("shopCart")))) ;
+				ShopCart shopCart=new Gson().fromJson(result.getString("shopCart"), ShopCart.class) ;
 				double 		totalprice=result.getDouble("totalprice");
 				long		bookingtime_ms=result.getLong("bookingtime_ms");
 				long 		donetime_ms=result.getLong("donetime_ms");
-				Position 	destination=Position.FromJsontoObject(new JSONObject(result.getString("destination")));
+				Position destination=new Gson().fromJson(result.getString("destination"), Position.class);
 				String 		buyername=result.getString("buyername");
 				String 		drivername=result.getString("drivername");
-				Restaurant 	supplier=Restaurant.FromJsontoObject(new JSONObject(result.getString("supplier")));
+				Restaurant supplier=new Gson().fromJson(result.getString("supplier"), Restaurant.class);
 				allOrder.add(new Order(auto,state,shopCart,totalprice,bookingtime_ms,donetime_ms,destination,buyername,drivername,supplier));
 			}
 			connection.close();

@@ -1,12 +1,9 @@
-package backend;
+package backend1;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import org.json.JSONObject;
+
+import java.sql.*;
 import java.util.ArrayList;
-import org.json.*;
 public class RestaurantAccount {
 	private String id;
 	private String password;
@@ -20,7 +17,7 @@ public class RestaurantAccount {
 		this.email=email;
 		this.myRTname = myRTname;
 	}
-	public RestaurantAccount(String id, String password,String email, String myRTname,Restaurant rt) {
+	public RestaurantAccount(String id, String password, String email, String myRTname, Restaurant rt) {
 		super();
 		this.id = id;
 		this.password = password;
@@ -66,9 +63,9 @@ public class RestaurantAccount {
 			String id   = this.id;
 			String password = this.password;
 			String email = this.email;
-			String jsonRestrant = this.myRestrant.tojsonStr();
+			String jsonRestrant = new JSONObject(this.myRestrant).toString();
 			// store it to SQL
-			//                              tablename     ??name
+			//                              tablename     項目name
 			Statement statement = con.createStatement();
 
 			statement.executeUpdate("INSERT INTO RT_Account (name,id,password,email,jsonRT)\r\n" + "VALUES ('"+name+"','" +id+ "','"+password+"','"+email+"','"+jsonRestrant+"');\n");
@@ -107,9 +104,6 @@ public class RestaurantAccount {
 				String password = result.getString("password");
 				String email = result.getString("email");
 				String jsonRestrant = result.getString("jsonRT");
-				System.out.println(jsonRestrant);
-//				System.out.println("break");
-//				System.out.println(new JSONObject(jsonRestrant));
 				Restaurant rt = Restaurant.FromJsontoObject(new JSONObject(jsonRestrant));
 				allAccount.add(new RestaurantAccount(name,id,password,email,rt));
 			}
