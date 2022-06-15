@@ -1,17 +1,17 @@
-# 本prj使用
+# 最終prj是test3，可以直接用exlipse開啟
+# 本prj使用的所有jar檔案，都包在test3內的資料夾libforPanda
+
+## 套件版本
 ## eclipse 2022 3 月版
 
 ## JAVA SE-17
 
-## JAVAFX 
+## JAVAFX openjfx-18.0.1使用到當中的library
+https://www.youtube.com/watch?v=H12uPhQ-oyY
 
-## openjfx-18.0.1
-### 的jar檔案，都包在資料夾libforPanda
-### 其內含有 本prj使用的library
-
-## 方便又好用的	Gson 2.9.0
-## 方便但難用的	SQLite jbdc
-## 不方便又難用的	org.json
+## Gson 2.9.0 方便又好用，請直接載入libforPanda中的gson-2.9.0.jar	
+## SQLite jbdc方便但難用，請直接載入libforPanda中的sqlite-jdbc-3.36.0.3.jar	
+## org.json不方便又難用，請直接載入libforPanda中的json-20220320.jar
 Gson真的簡單便利
 SQLite則是資料視覺化的親民程度高。
 orj.json...  應該叫orz，如果不是inteliji不支援Gson，我絕對不會用org.json...
@@ -22,8 +22,8 @@ orj.json...  應該叫orz，如果不是inteliji不支援Gson，我絕對不會�
 
 開檔案的教學在demo影片中喔!看影片比較方便!
 
-不然 
-請跟著下步驟，載入gson 2.9.0、SQLite jbdc、org.json
+不然也可以 
+請跟著下步驟，載入gson-2.9.0.jar、sqlite-jdbc-3.36.0.3.jar、json-20220320.jar
 project->propertiy->buildpath->classpath->add external jar 
 
 請跟著下步驟，載入javafx全部jar
