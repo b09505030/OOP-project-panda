@@ -6,8 +6,8 @@
 ## JAVAFX 
 
 ## openjfx-18.0.1
-## 的jar檔案，都包在資料夾libforPanda
-## 其內含有 本prj使用的library
+### 的jar檔案，都包在資料夾libforPanda
+### 其內含有 本prj使用的library
 
 ## 方便又好用的	Gson 2.9.0
 ## 方便但難用的	SQLite jbdc
