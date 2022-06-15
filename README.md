@@ -1,24 +1,24 @@
-#本prj使用
-##eclipse 2022 3 月版
+# 本prj使用
+## eclipse 2022 3 月版
 
-##JAVA SE-17
+## JAVA SE-17
 
-##JAVAFX 
+## JAVAFX 
 
-##openjfx-18.0.1
-##的jar檔案，都包在資料夾libforPanda
-##其內含有 本prj使用的library
+## openjfx-18.0.1
+## 的jar檔案，都包在資料夾libforPanda
+## 其內含有 本prj使用的library
 
-##方便又好用的	Gson 2.9.0
-##方便但難用的	SQLite jbdc
-##不方便又難用的	org.json
+## 方便又好用的	Gson 2.9.0
+## 方便但難用的	SQLite jbdc
+## 不方便又難用的	org.json
 Gson真的簡單便利
 SQLite則是資料視覺化的親民程度高。
 orj.json...  應該叫orz，如果不是inteliji不支援Gson，我絕對不會用org.json...
 
 
-##SQLite要先下載才能用	https://sqlite.org/download.html
-##DB browser 是視覺化SQLite的好工具好朋友 https://sqlitebrowser.org/dl/
+## SQLite要先下載才能用	https://sqlite.org/download.html
+## DB browser 是視覺化SQLite的好工具好朋友 https://sqlitebrowser.org/dl/
 
 開檔案的教學在demo影片中喔!看影片比較方便!
 
